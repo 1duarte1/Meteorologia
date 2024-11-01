@@ -1,4 +1,4 @@
-package cars.com.example.meteorologia
+package cars.com.example.meteorologia1
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -233,14 +233,12 @@ fun DayForecastCard(day: String, temp: String, description: String, imageResId: 
 }
 
 // Preview para TopBar
-
 @Composable
 fun TopBarPreview() {
     Meteorologia1Theme {
         TopBar()
     }
 }
-
 
 @Composable
 fun TitleBarPreview() {
@@ -250,7 +248,6 @@ fun TitleBarPreview() {
 }
 
 // Informações do tempo
-
 @Composable
 fun WeatherInfoPreview() {
     Meteorologia1Theme {
@@ -273,7 +270,6 @@ fun Page() {
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-
                 .fillMaxSize()
                 .alpha(0.2f) // Define 20% de opacidade
         )
@@ -285,63 +281,5 @@ fun Page() {
             WeatherInfoPreview()
             Next7DaysForecast()
         }
-
-
-// Previsão dos próximos 7 dias
-@Composable
-fun Next7DaysForecast() {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 16.dp, top = 8.dp)
-    ) {
-        Text(
-            text = "Próximos 7 dias",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Normal,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .horizontalScroll(rememberScrollState())
-        ) {
-            DayForecastCard(day = "Seg", temp = "25º", description = "Limpo", imageResId = R.drawable.sun)
-            DayForecastCard(day = "Ter", temp = "22º", description = "Limpo", imageResId = R.drawable.sun)
-            DayForecastCard(day = "Qua", temp = "15º", description = "Chuva", imageResId = R.drawable.snowy)
-            DayForecastCard(day = "Qui", temp = "18º", description = "Tempestade", imageResId = R.drawable.storm)
-            DayForecastCard(day = "Sex", temp = "18º", description = "Tempestade", imageResId = R.drawable.storm)
-            DayForecastCard(day = "Sab", temp = "18º", description = "Tempestade", imageResId = R.drawable.storm)
-            DayForecastCard(day = "Dom", temp = "18º", description = "Tempestade", imageResId = R.drawable.storm)
-        }
     }
 }
-
-// Composable para o cartão de previsão de um dia
-@Composable
-fun DayForecastCard(day: String, temp: String, description: String, imageResId: Int) {
-    Box(
-        modifier = Modifier
-            .padding(end = 16.dp)
-            .width(80.dp)
-            .height(130.dp)
-            .background(color = Color(0xFFEEEEEE), shape = CircleShape)
-            .padding(8.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Image(
-                painter = painterResource(id = imageResId),
-                contentDescription = "Ícone do tempo",
-                modifier = Modifier.size(40.dp)
-            )
-            Text(text = day, fontWeight = FontWeight.Bold)
-            Text(text = temp, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            Text(text = description, fontSize = 12.sp, color = Color.Gray)
-        }
-    }
-}
-
-    }
-}
-
